@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trang chủ dự án Rewes</title>
+    <link rel="stylesheet" href="public.css">
+    <link rel="stylesheet" href="trangchu.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="./function/canvasjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="./function/function.js"></script>
+    <script src="./function/main.js"></script>
+
+</head>
+
+<body>
+    <div class="header">
+        <div class="logo1">
+            <img src="./image/logoDuAn.png" sizes="80px">
+        </div>
+        <div class="noidung">
+            <h2>QUAN TRẮC MÔI TRƯỜNG THEO THỜI GIAN THỰC</h2>
+        </div>
+        <div class="logo2">
+            <img src="./image/logoTruong.png">
+            <img src="">
+
+        </div>
+    </div>
+    <div class="main">
+        <div class="hienthi">
+            <div class="card card1">
+                <div class="thoigian1">
+                    <div class="text texttime">THỜI GIAN THỰC:</div>
+                    <div id="realtime1"></div>
+                </div>
+            </div>
+            <div class="card suatlieu">
+                <div class="suatlieu1">
+                    <div class="text">SUẤT LIỀU</div>
+                    <div id="sensor1"></div>
+                </div>
+            </div>
+            <div class="card nhietdo">
+                <div class="nhietdo1">
+                    <div class="text">NHIỆT ĐỘ</div>
+                    <div id="sensor2"></div>
+                </div>
+            </div>
+            <div class="card doam">
+                <div class="doam1">
+                    <div class="text">ĐỘ ẨM</div>
+                    <div id="sensor3"></div>
+                </div>
+            </div>
+            <div class="card bui">
+                <div class="bui1">
+                    <div class="text">BỤI MỊN</div>
+                    <div id="sensor4"></div>
+                </div>
+            </div>
+            <div class="card co">
+                <div class="co1">
+                    <div class="text">KHÍ CO</div>
+                    <div id="sensor5"></div>
+                </div>
+            </div>
+            <div class="card ch4">
+                <div class="ch41">
+                    <div class="text">KHÍ CH4</div>
+                    <div id="ch44"></div>
+                </div>
+            </div>
+
+        </div>
+        <div class="bieudo">
+            <h3>Đồ thị theo thời gian thực:</h3>
+            <div id="chart1"></div>
+            <div class="groupbtn" style="text-align: center">
+                <button id="btn_phong_xa" class="btn btn-primary-spacing active" href="#">Suất liều</button>
+                <button id="btn_nhiet_do" class="btn" href="#">Nhiệt độ</button>
+                <button id="btn_do_am" class="btn" href="#">Độ ẩm</button>
+                <button id="btn_khi_co2" class="btn" href="#">Khí CO</button>
+                <button id="btn_khi_ch4" class="btn" href="#">Khí CH4</button>
+                <button id="btn_sensor_3" class="btn" href="#">Bụi mịn</button>
+            </div>
+        </div>
+        <!-- thanh menu -------------------------------------------------------->
+
+        <div class="slidebar" id="slidebar">
+            <!-- <div class="scroll"> -->
+            <div class="toggle" onclick="toggle_div()"></div>
+            <div class="tog">
+                <h2>Đăng nhập </h2>
+                <form id="inputbox" action="">
+                    <div class="inputbox">
+                        <input type="password" placeholder="Password" id="password">
+                        <input class="btn1" type="button" value="Login" onclick="onFormSubmit()">
+
+                    </div>
+                </form>
+            </div>
+            <ul>
+                <li><a href="index.html">Trang chủ</a></li>
+                <li><a href="information.html">Thông tin</a></li>
+                <li><a href="about.html">Giới thiệu</a></li>
+                <li><a href="contact.html">Liên hệ</a></li>
+            </ul>
+
+
+
+            <!-- </div> -->
+        </div>
+
+
+
+        <script type="text/javascript">
+
+
+            var correct_pass = '123456';
+            var inputPass = document.getElementById('password');
+            var formLogin = document.getElementById('inputbox');
+            inputPass.addEventListener('keydown', function (e) {
+                if (e.keyCode == 13) {
+                    onFormSubmit();
+                }
+            });
+            // if (formLogin.attachEvent) {
+            //     formLogin.attachEvent('submit', onFormSubmit);
+            // } else {
+            //     formLogin.addEventListener('submit', onFormSubmit);
+            // }
+
+            function onFormSubmit() {
+                var password = inputPass.value;
+                console.log('hihi', inputPass.value);
+                if (password == correct_pass) {
+                    window.location.assign("./Download.html");
+                } else {
+                    alert('nhap lai password');
+                }
+            }
+            // document.getElementById('keydown')
+
+        </script>
+        <script type="text/javascript">
+            function toggle_div() {
+                var element = document.getElementById('slidebar');
+                element.classList.toggle('active');
+            }
+        </script>
+
+        <!-- thanh menu -------------------------------------------------------->
+
+
+
+
+        <div class="footer"></div>
+
+</body>
+
+</html>

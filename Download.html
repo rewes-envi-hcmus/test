@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="down.css" />
+    <title>Download</title>
+  </head>
+
+  <body>
+    <div class="header">
+      <div class="logo1">
+        <img src="./image/logoDuAn.png" />
+      </div>
+      <div class="noidung">
+        <p>QUAN TRẮC MÔI TRƯỜNG THEO THỜI GIAN THỰC</p>
+      </div>
+      <div class="logo2">
+        <img src="./image/logoTruong.png" />
+        <img src="" />
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="none"></div>
+      <div class="text">
+        <p>Nhấn vào Download để tải dữ liệu thông số môi trường tại Bộ Môn</p>
+      </div>
+      <div class="down">
+        <button id="getReport">Download</button>
+        <!--  -->
+      </div>
+    </div>
+
+    <script>
+      const objectToCsv = function (data) {
+        const csvRows = [];
+        //get the headers
+        const headers = Object.keys(data[0]);
+        csvRows.push(headers.join(","));
+
+        //loop over the rows
+        for (const row of data) {
+          const values = headers.map((header) => {
+            const val = row[header];
+            const escaped = ("" + row[header]).replace(/"/g, '\\"');
+            return `"${escaped}"`;
+          });
+          csvRows.push(values.join(","));
+        }
+
+        // form escaped comma separated values
+        return csvRows.join("\n");
+      };
+      const download = function (data) {
+        const blob = new Blob([data], {
+          type: "text/csv",
+        });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.setAttribute("hidden", "");
+        a.setAttribute("href", url);
+        a.setAttribute("download", "download.csv");
+        a.click();
+      };
+      const getReport = async function () {
+        alert("Click ok to download");
+        // const jsonUrl = 'http://nguyen-nulab.ddns.net:8001/web/updatert';
+        // const jsonUrl = 'https://rewes.herokuapp.com/';
+        const jsonUrl = "https://envi-hcmus.herokuapp.com/mongodb";
+        // const jsonUrl = "http://dummy-data-rewes.herokuapp.com/";
+
+        const res = await fetch(jsonUrl);
+        console.log(res);
+        var json = await res.json();
+        console.log(json);
+        // const json = [];
+        // json.push(await res.json());
+
+        const data = json.map((row) => ({
+          "Dose (uSv/h)": row.dose,
+          "Humidity (%)": row.Hu,
+          Temperature: row.Te,
+          "CO (ppm)": row.sen1,
+          "CH4 (ppm)": row.sen2,
+          "Dust (ug/m3)": row.sen3,
+        }));
+
+        const csvData = objectToCsv(data);
+        download(csvData);
+      };
+
+      // main app
+      window.onload = function () {
+        // button click
+        const button = document.getElementById("getReport");
+        button.addEventListener("click", getReport);
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,304 @@
+body {
+    font-family: consolas;
+
+}
+
+.slidebar {
+    position: fixed;
+    top: 0;
+    left: -30%;
+    width: 30%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    transition: 0.5s;
+    z-index: 2000;
+    /* overflow: scroll; */
+}
+
+.slidebar .scroll {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    height: 800px;
+    overflow: scroll;
+}
+
+.slidebar.active {
+    left: 0;
+}
+
+.toggle {
+    position: absolute;
+    top: 25%;
+    transform: translateY(-50%);
+    right: -50px;
+    width: 50px;
+    height: 50px;
+    background: #fd0;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+
+.toggle:before {
+    content: ' ';
+    position: relative;
+    left: -5px;
+    width: 25px;
+    height: 25px;
+    border-top: 4px solid #000;
+    border-right: 4px solid #000;
+    transform: rotate(45deg);
+    transition: 1s;
+}
+
+.slidebar.active .toggle:before {
+    transform: rotate(225deg);
+    left: 5px;
+}
+
+.slidebar ul {
+    margin: 0;
+    padding: 0 0 0 30px;
+    transition: 0.5s;
+}
+
+.slidebar ul li {
+    list-style: none;
+    margin: 17px;
+}
+
+.slidebar ul li a {
+    position: relative;
+    display: inline-block;
+    color: #fff;
+    font-size: 40px;
+    text-decoration: none;
+    padding: 0 20px;
+    z-index: 2;
+    transition: 0.5s;
+    text-shadow: 0 2px 10px rgba(0 0 0 0.2);
+}
+
+.slidebar ul li a:hover {
+    letter-spacing: 4px;
+    transform: translateX(15px);
+}
+
+.slidebar .tog {
+    position: relative;
+    display: inline-block;
+    color: #fff;
+    font-size: 15px;
+    text-decoration: none;
+    z-index: 2;
+    transition: 0.5s;
+    text-shadow: 0 2px 10px rgba(0 0 0 0.2);
+    list-style: none;
+    margin: 0px;
+    padding: 50px 0 0 50px;
+    transition: 0.5s;
+    width: 350px;
+}
+
+.form {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+
+
+.tog h2 {
+    margin: 0px 0px 0 70px;
+    padding: 0;
+}
+
+form .inputbox input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #fff;
+    outline: none;
+    font-size: 18px;
+    color: #fff;
+    padding: 20px 30px 5px 0;
+    font-family: consolas;
+}
+
+.btn1 {
+    margin: 0 0 0 200px;
+}
+
+::placeholder {
+    color: #eee;
+}
+
+
+form .inputbox input[type="button"] {
+    background: #fff;
+    color: #000;
+    border: none;
+    font-weight: 900;
+    max-width: 100px;
+    cursor: pointer;
+    margin: 20px 0 0 0;
+}
+
+form .inputbox input[value="Login"] {
+    color: #000;
+    margin: 20px 0 0 90px;
+    padding: 10px;
+}
+
+.slidebar .tog {
+    position: relative;
+    display: inline-block;
+    color: #fff;
+    font-size: 15px;
+}
+
+/* responsive */
+
+/* @media only screen and (max-width: 1100px) {
+    .slidebar ul li a {
+
+        font-size: 30px;
+
+    }
+
+    .slidebar .tog {
+        font-size: 15px;
+        padding: 50px 0 0 30px;
+        width: 250px;
+    }
+
+    .tog h2 {
+        margin: 0px 0px 0 30px;
+        padding: 0;
+    }
+
+    form .inputbox input[value="Login"] {
+
+        margin: 20px 0 0 50px;
+
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .slidebar ul li a {
+        font-size: 25px;
+    }
+
+    .slidebar .tog {
+        font-size: 12px;
+        padding: 50px 0 0 20px;
+        width: 210px;
+    }
+
+    .tog h2 {
+        margin: 0px 0px 0 30px;
+        padding: 0;
+    }
+
+    form .inputbox input[value="Login"] {
+
+        margin: 20px 0 0 50px;
+
+    }
+} */
+
+@media only screen and (max-width: 1100px) {
+    .slidebar {
+
+        left: -50%;
+        width: 50%;
+
+    }
+
+
+
+}
+
+
+@media only screen and (max-width: 730px) {
+    .slidebar {
+
+        left: -50%;
+        width: 50%;
+    }
+
+    .slidebar ul li a {
+        font-size: 25px;
+    }
+
+    .slidebar .tog {
+        font-size: 12px;
+        padding: 50px 0 0 50px;
+        width: 250px;
+    }
+
+    .tog h2 {
+        margin: 0px 0px 0 30px;
+        padding: 0;
+    }
+
+    form .inputbox input[value="Login"] {
+
+        margin: 20px 0 0 50px;
+
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .slidebar {
+
+        left: -70%;
+        width: 70%;
+    }
+
+    .slidebar ul li a {
+        font-size: 37px;
+    }
+
+    .slidebar .tog {
+        font-size: 20px;
+        padding: 50px 0 0 50px;
+        width: 270px;
+    }
+
+    .tog h2 {
+        margin: 0px 0px 0 30px;
+        padding: 0;
+    }
+
+    form .inputbox input[value="Login"] {
+
+        margin: 20px 0 0 50px;
+    }
+}
+
+@media only screen and (max-width: 444px) {
+    .slidebar {
+
+        left: -85%;
+        width: 85%;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    .slidebar {
+
+        left: -85%;
+        width: 85%;
+    }
+
+    .slidebar ul li a {
+        font-size: 28px;
+    }
+}
